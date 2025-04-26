@@ -1,6 +1,6 @@
 import { createSignal, onMount } from "solid-js";
 import "./App.css";
-import meta from "../../anniversary/meta.json";
+import meta from "./meta.json";
 
 function findWordsStartingWith(prefix) {
     let node = meta;
