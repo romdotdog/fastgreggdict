@@ -1,0 +1,32 @@
+#root > div {
+    padding: 1rem;
+}
+
+#root > div > * {
+    margin-bottom: 1rem;
+}
+
+input {
+    all: unset;
+    width: 100%;
+    font-size: 3rem;
+    font-weight: bold;
+    font-family: inherit;
+    background: transparent;
+    color: #000;
+}
+
+#root > div > div {
+    font-size: 3rem;
+    font-weight: bold;
+    color: rgba(0, 0, 0, 0.35);
+}
+
+img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    object-fit: contain;
+    max-width: 65vw;
+}
