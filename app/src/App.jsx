@@ -31,7 +31,7 @@ function findWordsStartingWith(prefix) {
 function App() {
     let inputRef;
     let preRef;
-    const [img, setImg] = createSignal("");
+    const [displayWord, setDisplayWord] = createSignal(null);
     const [text, setText] = createSignal("");
     const [echoes, setEchoes] = createSignal([]);
     const [fileText, setFileText] = createSignal("");
@@ -77,10 +77,10 @@ function App() {
         collect(matches, node, prefix);
         if (matches.length > 0) {
             setEchoes(matches.map((w) => w.word));
-            setImg(matches[0].url);
+            setDisplayWord(matches[0]);
         } else {
             setEchoes([]);
-            setImg("");
+            setDisplayWord(null);
         }
     };
 
@@ -91,14 +91,14 @@ function App() {
             const words = findWordsStartingWith(value.toLowerCase());
             if (words.length > 0) {
                 setEchoes(words.map((w) => w.word));
-                setImg(words[0].url);
+                setDisplayWord(words[0]);
             }
         } else if (fileText()) {
             updateFromFile(currentWord());
             setTimeout(updateHighlight, 0);
         } else {
             setEchoes([]);
-            setImg("");
+            setDisplayWord(null);
         }
     };
 
@@ -210,8 +210,11 @@ function App() {
                     }}
                 />
             )}
-            {img() && (
-                <img src={img()} />
+            {displayWord() && (
+                <div id="image">
+                    <img src={displayWord().url} />
+                    <p>{displayWord().word}</p>
+                </div>
             )}
         </>
     );

@@ -38,12 +38,25 @@
     z-index: 2;
 }
 
-img {
+#image {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    object-fit: contain;
-    max-width: 65vw;
     z-index: 3;
+}
+
+#image > img {
+    max-width: 65vw;
+    object-fit: contain;
+}
+
+#image > p {
+    text-align: center;
+    font-size: 1.3rem;
+    position: absolute;
+    margin: 0;
+    margin-top: 0.2rem;
+    width: 100%;
+    font-weight: bold;
 }
