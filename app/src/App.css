@@ -1,25 +1,41 @@
-#root > div {
+#container {
     padding: 1rem;
 }
 
-#root > div > * {
+/* #root > div > * {
     margin-bottom: 1rem;
-}
+} */
 
-input {
+#search {
     all: unset;
     width: 100%;
     font-size: 3rem;
     font-weight: bold;
     font-family: inherit;
     background: transparent;
-    color: #000;
 }
 
-#root > div > div {
+#text {
+    font-family: inherit;
+    margin: 0;
+    white-space: pre-wrap;
+    word-break: break-word;
+}
+
+#highlight {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.15);
+    pointer-events: none;
+    transition: all 0.1s ease-out;
+    z-index: 1;
+}
+
+.suggestion,
+#text {
     font-size: 3rem;
     font-weight: bold;
-    color: rgba(0, 0, 0, 0.35);
+    color: rgba(232, 230, 227, 0.35);
+    z-index: 2;
 }
 
 img {
@@ -29,4 +45,5 @@ img {
     transform: translate(-50%, -50%);
     object-fit: contain;
     max-width: 65vw;
+    z-index: 3;
 }
