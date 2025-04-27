@@ -117,7 +117,7 @@ function App() {
         const rect = range.getBoundingClientRect();
         const level = 75 - rect.top;
 
-        setOffset(offset => offset + level);
+        setOffset(offset => offset + level - window.scrollY);
 
         setHighlightPos({
             top: rect.top + level - 2,
@@ -125,6 +125,8 @@ function App() {
             width: rect.width + 8,
             height: rect.height + 4
         });
+
+        window.scrollTo({ top: 0, behavior: "smooth" });
     };
 
     onMount(() => {
@@ -137,6 +139,17 @@ function App() {
                 if (text() === "" && fileText()) {
                     e.preventDefault();
                     findNextWord();
+                }
+            } else if (e.ctrlKey && e.key === "Enter") {
+                if (window.getSelection) {
+                    const selection = window.getSelection();
+                    if (selection) {
+                        const selectedText = selection.toString().trim();
+                        if (selectedText && fileText()) {
+                            setTextIndex(selection.anchorOffset);
+                            findNextWord();
+                        }
+                    }
                 }
             }
         };
